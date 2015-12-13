@@ -112,7 +112,8 @@
           pg.entries = [];
         }
         pg.entries.push(entries[i]); // Record reference
-        pg.transfer += entries[i].getRawContentSize();
+        //pg.transfer += entries[i].getRawContentSize();
+        pg.transfer += entries[i].getRawSize();
       });
 
       $.each(pages, function(i, pg) {
@@ -150,8 +151,8 @@
     };
 
     $scope.setSort = function(sort) {
-      $scope.predicate = sort;
-      $scope.reverse = !$scope.reverse;
+      //$scope.predicate = sort;
+      //$scope.reverse = !$scope.reverse;
     };
 
     $scope.toggleReqHeaders = function() {

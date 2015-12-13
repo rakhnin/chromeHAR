@@ -104,6 +104,18 @@ var HAREntry = (function HAREntryClosure() {
       return Number.bytesToString(this._entry.response.headersSize + this._entry.response.bodySize);
     },
 
+    getRawSize: function () {
+      // TODO: Fixme, this doesn't correctly pick up items from cache.
+      if (this._entry.cached) {
+        return 0;
+      }
+      if (this._entry.response.status === 304) {
+        // Not modified
+        return this._entry.response.headersSize;
+      }
+      return this._entry.response.headersSize + this._entry.response.bodySize;
+    },
+
     getContentSize: function () {
       return Number.bytesToString(this._entry.response.content.size);
     },
